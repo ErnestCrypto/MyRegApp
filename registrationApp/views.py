@@ -1,9 +1,10 @@
 # Creating our views
 from django.shortcuts import render, redirect
 from .models import User
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
 from .form import UserForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 
 
 def homePage(request):
@@ -32,7 +33,7 @@ def registerPage(request):
             messages.error(
                 request, 'Please make sure the passwords are the same in both fields')
     else:
-        form = UserForm()
+        form = UserFxorm()
         messages.error(request, 'Failed to add user')
     context = {'form': form}
     return render(request, 'app/register.html', context)
@@ -40,6 +41,21 @@ def registerPage(request):
 
 def loginPage(request):
     form = UserForm()
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password1 = request.POST.get('password1')
+
+        try:
+            user = User.objects.get(username == username)
+        except:
+            messages.error(request, 'User does not exisit')
+        user = authenticate(request, username=username, password=password1)
+
+        if user is not None:
+            login('request, user')
+            return redirect('home')
+        else:
+            messages.error(request, 'Username does not exisit')
 
     context = {'form': form}
     return render(request, 'app/login.html', context)

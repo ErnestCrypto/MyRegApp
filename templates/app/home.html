@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Home</title>
+
+    <!-- Favicons -->
+
+    <style>
+      body {
+        background-image: url("https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/686299/cover-Redesign-WebSecurityVulnerabilities-Luke_Newsletter-04d5cdafdaf363f0bc6aa723a391c343-91ee4d294318c967b26187f4d67a8351.png");
+      }
+      button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16;
+  margin: 20px;
+ opacity: 0.9;
+ border-radius: 2%;
+
+ button:hover {opacity:1;}
+
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="cover.css" rel="stylesheet" />
+
+     <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block" onclick="window.location.href='{% url 'registrationApp:registerPage'%}'">
+            Create Account
+          </button>
+           <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block" onclick="window.location.href='{% url 'registrationApp:loginPage'%}'">
+           Login
+          </button>
+
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark"></body>
+</html>
